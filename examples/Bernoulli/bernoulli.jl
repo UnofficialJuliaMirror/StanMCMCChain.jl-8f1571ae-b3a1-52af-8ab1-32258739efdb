@@ -28,11 +28,16 @@ cd(ProjDir) do
 
   global stanmodel, rc, chains, cnames
   stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
-    model=bernoullimodel, output_format=:mcmschains);
+    model=bernoullimodel, output_format=:mcmcchains);
 
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
-    
+  
   @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
+  
+  plot(chains, [:mixeddensity, :autocor, :mean])
+
+  # save to a png file
+  savefig("bernoulli.png")  
 
 end # cd
