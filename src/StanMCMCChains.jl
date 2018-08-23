@@ -4,7 +4,7 @@ module StanMCMCChains
 using MCMCChains, Statistics, Documenter
 
 import CmdStan: convert_a3d
-#import Mamba: AbstractChains, Chains
+import MCMCChain: AbstractChains, Chains
 
 #=
 abstract type AbstractChains end

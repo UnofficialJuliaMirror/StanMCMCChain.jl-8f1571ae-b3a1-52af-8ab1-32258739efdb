@@ -1,6 +1,6 @@
 ######### CmdStan program example  ###########
 
-using CmdStan, StanMamba, Test, Statistics
+using CmdStan, StanMCMCChains, Test, Statistics
 
 ProjDir = dirname(@__FILE__)
 cd(ProjDir) do
@@ -28,7 +28,7 @@ cd(ProjDir) do
 
   global stanmodel, rc, chains, cnames
   stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
-    model=bernoullimodel, output_format=:mambachains);
+    model=bernoullimodel, output_format=:mcmschains);
 
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
