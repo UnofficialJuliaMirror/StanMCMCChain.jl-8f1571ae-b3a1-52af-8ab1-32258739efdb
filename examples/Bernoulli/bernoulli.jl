@@ -1,6 +1,6 @@
 ######### CmdStan program example  ###########
 
-using CmdStan, StanMCMCChains, Test, Statistics
+using CmdStan, MCMCChain, StanMCMCChains, Plots, Test, Statistics
 
 ProjDir = dirname(@__FILE__)
 cd(ProjDir) do
@@ -35,7 +35,7 @@ cd(ProjDir) do
   
   @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
   
-  plot(chains, [:mixeddensity, :autocor, :mean])
+  plot(chains[:, 8, :], [:mixeddensity, :autocor, :mean])
 
   # save to a png file
   savefig("bernoulli.png")  
