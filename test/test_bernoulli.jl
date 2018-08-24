@@ -6,6 +6,7 @@ cd(ProjDir) do
   isdir("tmp") &&
     rm("tmp", recursive=true);
     
+    #=
     ProjDir = dirname(@__FILE__)
     cd(ProjDir) do
 
@@ -37,10 +38,13 @@ cd(ProjDir) do
       rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
         CmdStanDir=CMDSTAN_HOME);
   
-      @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
-
     end # cd
+    =#
+    
+    include("../examples/Bernoulli/bernoulli.jl")
 
+    @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
+  
   isdir("tmp") &&
     rm("tmp", recursive=true);
 

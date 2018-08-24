@@ -1,7 +1,7 @@
 module StanMCMCChains
 
 # package code goes here
-using MCMCChain, Statistics, Documenter
+using MCMCChain, Plots, Statistics, Documenter
 
 import CmdStan: convert_a3d
 import MCMCChain: AbstractChains, Chains
