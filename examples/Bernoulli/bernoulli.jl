@@ -1,6 +1,6 @@
 ######### CmdStan program example  ###########
 
-using CmdStan, MCMCChain, StanMCMCChains, Test, Statistics
+using CmdStan, MCMCChain, StanMCMCChain, Test, Statistics
 
 ProjDir = dirname(@__FILE__)
 cd(ProjDir) do
