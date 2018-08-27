@@ -1,4 +1,4 @@
-using CmdStan, StanMCMCChains, Test, Statistics
+using CmdStan, StanMCMCChain, Test, Statistics
 
 ProjDir = joinpath(dirname(@__FILE__), "..", "examples", "Bernoulli")
 cd(ProjDir) do

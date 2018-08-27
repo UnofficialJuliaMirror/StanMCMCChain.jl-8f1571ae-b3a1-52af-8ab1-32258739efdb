@@ -1,4 +1,4 @@
-module StanMCMCChains
+module StanMCMCChain
 
 # package code goes here
 using MCMCChain, Plots, Statistics, Documenter
