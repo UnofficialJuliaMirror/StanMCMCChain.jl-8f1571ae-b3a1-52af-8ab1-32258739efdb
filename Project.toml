@@ -1,4 +1,4 @@
-name = "StanMCMCChains"
+name = "StanMCMCChain"
 uuid = "7c54f3ea-f601-52d0-b368-23ec931b1f8b"
 authors = ["StanJulia <goedman@mac.com>"]
 version = "0.1.0"
