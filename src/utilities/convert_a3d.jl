@@ -7,5 +7,5 @@
 #     model=bernoullimodel, output_format=:mcmcchains);
 
 function convert_a3d(a3d, cnames, ::Val{:mcmcchain})
-  Chains(a3d)
+  Chains(a3d, names=cnames)
 end
