@@ -33,7 +33,7 @@ cd(ProjDir) do
 
       global stanmodel, rc, chains, cnames
       stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
-        model=bernoullimodel, output_format=:mcmcchains);
+        model=bernoullimodel, output_format=:mcmcchain);
 
       rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
         CmdStanDir=CMDSTAN_HOME);

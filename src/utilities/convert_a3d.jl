@@ -6,6 +6,6 @@
 #   stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
 #     model=bernoullimodel, output_format=:mcmcchains);
 
-function convert_a3d(a3d, cnames, ::Val{:mcmcchains})
+function convert_a3d(a3d, cnames, ::Val{:mcmcchain})
   Chains(a3d)
 end
