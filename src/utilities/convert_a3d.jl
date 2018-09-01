@@ -38,6 +38,6 @@ Options 2 through 4 are respectively provided by the packages StanDataFrames, St
 * `res`                       : Draws converted to the specified format.
 ```
 """
-function convert_a3d(a3d_array, cnames, ::Val{:dataframe})
+function convert_a3d(a3d_array, cnames, ::Val{:mcmcchain})
   Chains(a3d_array, names=cnames)
 end
