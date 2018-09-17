@@ -26,3 +26,4 @@ The subsequent call to stan() will now return a MCMCChain.Chains object in chain
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
 ```
+
