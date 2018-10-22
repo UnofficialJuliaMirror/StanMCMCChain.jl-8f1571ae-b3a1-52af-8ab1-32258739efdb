@@ -13,14 +13,14 @@ This package converts the output produced by CmdStan.jl to a TuringLang/Chains o
 
 ## Usage
 
-In the definition of the Stanmodel, request the output_format=:mcmcchains:
+In the definition of the Stanmodel, request the output_format=:mcmcchain:
 
 ```
   stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
-    model=bernoullimodel, output_format=:mcmcchains);
+    model=bernoullimodel, output_format=:mcmcchain);
 ```
 
-The subsequent call to stan() will now return a MCMCChain.Chains object in chains:
+The subsequent call to stan() will now return a MCMCChain.Chain object in chains:
 
 ```
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
