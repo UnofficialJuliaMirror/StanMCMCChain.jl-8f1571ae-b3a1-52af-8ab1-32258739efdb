@@ -26,20 +26,17 @@ script:
   - cd $TRAVIS_BUILD_DIR
   - julia -e 'using Pkg; Pkg.test("StanMCMCChain"; coverage=true)'
 
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+    
 after_success:
+  - julia --project=test/coverage -e 'using Pkg; Pkg.instantiate()'
+  - julia --project=test/coverage test/coverage/coverage.jl
   
-  # Documentation
+notifications:
+  email: false
   
-  #- julia -e 'Pkg.add("Documenter")'
-  #- julia -e 'cd(Pkg.dir("StanMCMCChain")); include(joinpath("docs", "make.jl"))'
-  
-  # Coverage
-  
-  # push coverage results to Coveralls
-  
-  - julia -e 'cd(Pkg.dir("StanMCMCChain")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
-  
-  # push coverage results to Codecov
-  
-  - julia -e 'cd(Pkg.dir("StanMCMCChain")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-
+git:
+  depth: 99999999

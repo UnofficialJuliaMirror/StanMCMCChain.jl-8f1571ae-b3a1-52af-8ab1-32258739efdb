@@ -26,3 +26,5 @@ The subsequent call to stan() will now return a MCMCChain.Chain object in chains
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
 ```
+
+See bernoulli.jl in the examples/Bernoulli directory. More examples are in [StanMCMCChainExamples](https://github.com/StanJulia/StanMCMCChainExamples.jl).
