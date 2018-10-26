@@ -6,7 +6,6 @@
 
 [![codecov.io](http://codecov.io/github/StanJulia/StanMCMCChain.jl/coverage.svg?branch=master)](http://codecov.io/github/StanJulia/StanMCMCChain.jl?branch=master)
 
-
 ## Introduction
 
 This package converts the output produced by CmdStan.jl to a TuringLang/Chains object suitable for further processing by the [MCMCChain](https://github.com/TuringLang/MCMCChain.jl) package.
