@@ -20,9 +20,27 @@ In the definition of the Stanmodel, request the output_format=:mcmcchains:
     model=bernoullimodel, output_format=:mcmcchains);
 ```
 
-The subsequent call to stan() will now return a MCMCChain.Chains object in chains:
+The subsequent call to stan() will now return a MCMCChain.Chains object in chains as in the included Bernoulli example:
 
 ```
+... (snipped)
+
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
+    
+... (snipped)
+
+```
+
+It is also possible to do this conversion after the call to stan():
+
+```
+  stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
+    model=bernoullimodel);
+
+  rc, sims, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
+    CmdStanDir=CMDSTAN_HOME);
+  
+  chains = convert_a3d(sims, cnames, Val(:mcmcchains))
+
 ```
