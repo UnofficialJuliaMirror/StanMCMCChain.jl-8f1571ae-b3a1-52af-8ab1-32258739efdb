@@ -43,3 +43,7 @@ It is also possible to do this conversion after the call to stan():
   chains = convert_a3d(sims, cnames, Val(:mcmcchains))
 
 ```
+
+## Further examples
+
+Several more examples will be contained in [StanMCMCChainExamples.jl](https://github.com/StanJulia/StanMCMCChainExamples.jl).
