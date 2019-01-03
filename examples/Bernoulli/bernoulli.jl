@@ -27,11 +27,13 @@ cd(ProjDir) do
   ]
 
   global stanmodel, rc, chains, cnames
-  stanmodel = Stanmodel(num_samples=1200, thin=2, name="bernoulli", 
+  stanmodel = Stanmodel(num_samples=1200, thin=1, name="bernoulli", 
     model=bernoullimodel, output_format=:mcmcchain);
 
   rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
+    
+  describe(chains)
   
   @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
   
