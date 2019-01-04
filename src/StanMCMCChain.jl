@@ -2,11 +2,13 @@ module StanMCMCChain
 
 # package code goes here
 
-using MCMCChain, Plots, Statistics
+using Reexport 
+
+@reexport using CmdStan, MCMCChain, Plots, Statistics, JLD
 import CmdStan: convert_a3d
-import MCMCChain: AbstractChains, Chains
 
 include("utilities/convert_a3d.jl")
+#include("utilities/jld.jl")
 
 export
   convert_a3d

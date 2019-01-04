@@ -1,6 +1,6 @@
 ######### CmdStan program example  ###########
 
-using CmdStan, StanMCMCChain, MCMCChain, Test, Statistics
+using CmdStan, StanMCMCChain, MCMCChain, Test, JLD, Statistics
 
 ProjDir = dirname(@__FILE__)
 cd(ProjDir) do
@@ -26,15 +26,28 @@ cd(ProjDir) do
     Dict("N" => 10, "y" => [0, 0, 0, 1, 0, 0, 0, 1, 0, 1])
   ]
 
-  global stanmodel, rc, chains, cnames
+  global stanmodel, rc, chains, cnames, d
+  
   stanmodel = Stanmodel(num_samples=1200, thin=1, name="bernoulli", 
     model=bernoullimodel, output_format=:mcmcchain);
 
-  rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
+ @time rc, chains, cnames = stan(stanmodel, observeddata, ProjDir, diagnostics=false,
     CmdStanDir=CMDSTAN_HOME);
     
   describe(chains)
+    
+  @time save("tmp/chains.jld", 
+    "range", chains.range, 
+    "a3d", chains.value,
+    "names", chains.names, 
+    "chains", chains.chains)
+    
+  @time d = load(joinpath(ProjDir, "tmp", "chains.jld"))
+
+  chn2 = MCMCChain.Chains(d["a3d"], names=d["names"])
   
-  @test 0.1 <  mean(chains.value[:, 8, :] ) < 0.6
+  describe(chn2) 
+  
+  @test 0.1 <  mean(chn2.value[:, 8, :] ) < 0.6
   
 end # cd
