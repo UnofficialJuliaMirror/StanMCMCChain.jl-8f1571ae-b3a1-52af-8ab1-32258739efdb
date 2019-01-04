@@ -35,14 +35,17 @@ cd(ProjDir) do
     CmdStanDir=CMDSTAN_HOME);
     
   describe(chains)
+  println()
     
   @time save("tmp/chains.jld", 
     "range", chains.range, 
     "a3d", chains.value,
     "names", chains.names, 
     "chains", chains.chains)
-    
+  println()
+  
   @time d = load(joinpath(ProjDir, "tmp", "chains.jld"))
+  println()
 
   chn2 = MCMCChain.Chains(d["a3d"], names=d["names"])
   

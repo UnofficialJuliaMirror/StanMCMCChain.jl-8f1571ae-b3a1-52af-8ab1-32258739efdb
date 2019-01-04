@@ -44,6 +44,8 @@ It is also possible to do this conversion after the call to stan():
 
 ```
 
+The bernoulli example also demonstrated how a Chains object can be saved and restored.
+
 ## Further examples
 
 Several more examples will be contained in [StanMCMCChainExamples.jl](https://github.com/StanJulia/StanMCMCChainExamples.jl).
