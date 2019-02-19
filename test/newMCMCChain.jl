@@ -48,5 +48,5 @@ chn = Chains(a3d,
   )
 )
 
-describe(chn, section=:parameters)
+describe(chn)
 describe(chn, section=:internals)
